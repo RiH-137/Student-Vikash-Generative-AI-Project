@@ -1,0 +1,9 @@
+
+streamlit run app.py --server.maxUploadSize=500
+pip install --upgrade langchain-google-genai
+from google.cloud import vision
+
+
+pip install -U git+https://github.com/google-gemini/generative-ai-python@imagen
+
+pip install --upgrade Pillow
