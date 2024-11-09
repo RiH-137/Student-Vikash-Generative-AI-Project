@@ -14,7 +14,6 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.chains.question_answering import load_qa_chain
 from langchain.prompts import PromptTemplate
 
-from dotenv import load_dotenv
 import PyPDF2 as pdf
 from dotenv import load_dotenv
 import json
@@ -31,7 +30,7 @@ genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
 # Page: Chintu GPT
 ## function to load Gemini Pro model and get repsonses
-model=genai.GenerativeModel("gemini-pro") 
+model=genai.GenerativeModel("gemini-1.5-flash") 
 chat = model.start_chat(history=[])
 def get_gemini_response(question):
     
@@ -39,31 +38,31 @@ def get_gemini_response(question):
     return response
 
 
-def chintu_gpt_page():
-    st.header("Chintu GPT 🤖")
-    st.text("Chintu GPT can support text input.")
-    st.text(" Ask any question or chat in English, Hinglish, German, Telegu-English etc. and get the answer.")
-    # initialize session state for chat history if it doesn't exist
-    if 'chat_history' not in st.session_state:
-        st.session_state['chat_history'] = []    #we will put all the chat history in this empty list
+# def chintu_gpt_page():
+#     st.header("Chintu GPT 🤖")
+#     st.text("Chintu GPT can support text input.")
+#     st.text(" Ask any question or chat in English, Hinglish, German, Telegu-English etc. and get the answer.")
+#     # initialize session state for chat history if it doesn't exist
+#     if 'chat_history' not in st.session_state:
+#         st.session_state['chat_history'] = []    #we will put all the chat history in this empty list
 
-    input=st.text_input("Say naa...",key="input")
-    submit=st.button("Chat...")
+#     input=st.text_input("Say naa...",key="input")
+#     submit=st.button("Chat...")
 
-    if submit and input:
-        response=get_gemini_response(input)
-        # add user query and response to session state chat history
-        st.session_state['chat_history'].append(("You", input))
-        st.subheader("Chintu.....")
-        for chunk in response:
-            st.write(chunk.text)
-            st.session_state['chat_history'].append(("Chintu", chunk.text))
-    st.subheader("Coverstion...")
+#     if submit and input:
+#         response=get_gemini_response(input)
+#         # add user query and response to session state chat history
+#         st.session_state['chat_history'].append(("You", input))
+#         st.subheader("Chintu.....")
+#         for chunk in response:
+#             st.write(chunk.text)
+#             st.session_state['chat_history'].append(("Chintu", chunk.text))
+#     st.subheader("Coverstion...")
 
 
-     #displying output   
-    for role, text in st.session_state['chat_history']:
-        st.write(f"{role}: {text}")
+#      #displying output   
+#     for role, text in st.session_state['chat_history']:
+#         st.write(f"{role}: {text}")
 
 
 #========================================================================================================
@@ -832,7 +831,7 @@ def image_to_code_page():
 
 # Sidebar navigation
 pages = {
-    "Chintu GPT": chintu_gpt_page,
+    # "Chintu GPT": chintu_gpt_page,
     "Chintu GPT V2": chintu_gpt_v2_page,
     # "PDF se Padhai": input_pdf_text,
     "Image to Text": img_to_text,
