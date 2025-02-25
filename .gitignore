@@ -4,3 +4,5 @@
 .venv
 .venv/
 .venv/*
+.page/
+.page/*
