@@ -14,13 +14,13 @@ langchain_google_genai
 pdfplumber
 
 
-chromadb
+
 pdf2image
 Pillow
 
 langchain
 
-
+chromadb
 
 
 

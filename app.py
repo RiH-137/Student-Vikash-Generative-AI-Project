@@ -45,7 +45,7 @@ def chintu_gpt_page():
     if 'history' not in st.session_state:
         st.session_state.history = []
 
-    st.header("Chintu GPT V2 - Chatbot")
+    st.header("Chintu GPT V1 - Chatbot")
     st.text("Ask questions in any language (English, Hinglish, German, Telugu-English) and get answers.")
     
     # Input area for user question
